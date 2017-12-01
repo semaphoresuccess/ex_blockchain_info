@@ -7,7 +7,7 @@ defmodule HttpBlockchainInfo do
   @guid Application.get_env(:ex_blockchain_info, :guid)
 
   def request(method, params) do
-    url = "http://" <> @host <> ":" <> @port <> "/merchant/" <> @guid <> "/" <>method
+    url = "http://" <> @host <> ":" <> @port <> "/merchant/" <> @guid <> "/" <> method
     {:ok, %HTTPoison.Response{body: body}} = HTTPoison.post(url, params, %{"Content-Type" => "application/json"})
     body |> Poison.decode!
   end
