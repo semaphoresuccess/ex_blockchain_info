@@ -19,3 +19,8 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/exblockchaininfo](https://hexdocs.pm/exblockchaininfo).
 
+## insall blockchainInfo Node and run it
+`blockchain-wallet-service start --port 30000`
+
+## run in console
+`iex -S mix`
