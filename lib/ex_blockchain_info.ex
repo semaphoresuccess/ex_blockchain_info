@@ -4,36 +4,36 @@ defmodule ExBlockchainInfo do
   """
 import HttpBlockchainInfo
   import Parameters
-  def wallet_balance do
-    HttpBlockchainInfo.request("balance", Parameters.parameters_get)
+  def get_wallet_balance do
+    HttpBlockchainInfo.request("balance", Parameters.get_parameters)
   end
 
-  def address_create(label \\ "") do
-    params = Parameters.parameters_get("address_create", label)
+  def create_address(label \\ "") do
+    params = Parameters.get_parameters("address_create", label)
     HttpBlockchainInfo.request("new_address", params)
   end
 
-  def address_balance(address) do
-    params = Parameters.parameters_get("address_balance", address)
+  def get_address_balance(address) do
+    params = Parameters.get_parameters("address_balance", address)
     HttpBlockchainInfo.request("address_balance", params)
   end
 
-  def address_archive(address) do
-    params = Parameters.parameters_get("address_archive", address)
+  def archive_address(address) do
+    params = Parameters.get_parameters("address_archive", address)
     HttpBlockchainInfo.request("archive_address", params)
   end
 
-  def address_unarchive(address) do
-    params = Parameters.parameters_get("address_balance", address)
+  def unarchive_address(address) do
+    params = Parameters.get_parameters("address_balance", address)
     HttpBlockchainInfo.request("unarchive_address", params)
   end
 
-  def list do
-    HttpBlockchainInfo.request("list", Parameters.parameters_get)
+  def get_addresses_list do
+    HttpBlockchainInfo.request("list", Parameters.get_parameters)
   end
 
-  def payment(amount, fee \\ "10000", to) do
-    params = Parameters.parameters_get("payment", amount, fee, to)
+  def send_single_payment(amount, fee \\ "10000", to) do
+    params = Parameters.get_parameters("payment", amount, fee, to)
     HttpBlockchainInfo.request("payment", params)
   end
 
