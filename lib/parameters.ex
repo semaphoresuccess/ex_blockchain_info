@@ -1,4 +1,4 @@
-defmodule Parameters do
+defmodule ExBlockchainInfo.Parameters do
   @moduledoc """
   Documentation for Parameters.
   """
@@ -18,7 +18,7 @@ defmodule Parameters do
     %{"password" => @password, "second_password" => @second_pass, "address" => address} |> Poison.encode!
   end
 
-  def get_parameters("payment", amount, fee, to) do
+  def get_parameters("payment", amount, to, fee) do
     %{"password" => @password, "second_password" => @second_pass, "amount" => amount, "fee" => fee, "to" => to} |> Poison.encode!
   end
 

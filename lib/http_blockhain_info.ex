@@ -1,4 +1,4 @@
-defmodule HttpBlockchainInfo do
+defmodule ExBlockchainInfo.Http do
   @moduledoc """
   Documentation for BlockinfoEx.
   """
