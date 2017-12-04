@@ -1,4 +1,4 @@
-defmodule Exblockchaininfo.Mixfile do
+defmodule ExBlockchainInfo.Mixfile do
   use Mix.Project
 
   def project do
