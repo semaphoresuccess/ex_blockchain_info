@@ -14,12 +14,12 @@ defmodule ExBlockchainInfo.Wallet do
   end
 
   def archive_address(address) do
-    params = Parameters.get_parameters("address_archive", address)
+    params = ExBlockchainInfo.Parameters.get_parameters("address_archive", address)
     ExBlockchainInfo.Http.request("archive_address", params)
   end
 
   def unarchive_address(address) do
-    params = Parameters.get_parameters("address_balance", address)
+    params = ExBlockchainInfo.Parameters.get_parameters("address_balance", address)
     ExBlockchainInfo.Http.request("unarchive_address", params)
   end
 

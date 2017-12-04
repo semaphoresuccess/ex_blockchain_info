@@ -26,7 +26,9 @@ defmodule ExBlockchainInfo.Mixfile do
   defp deps do
     [
       {:poison, "~> 3.1.0", override: true},
-      {:httpoison, "~> 0.11.2"}
+      {:httpoison, "~> 0.11.2"},
+      {:mock, "~> 0.2.0", only: :test},
+      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false}
     ]
   end
 end
