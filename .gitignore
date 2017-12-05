@@ -24,3 +24,4 @@ erl_crash.dump
 
 # Config file
 /config/dev.secret.exs
+*.iml
