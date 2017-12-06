@@ -4,12 +4,15 @@ defmodule ExBlockchainInfo.WalletTest do
   import Mock
 
   @main_pass "password"
+  @second_pass "passwordpassword"
   @host "localhost"
   @port "3000"
   @guid "guid"
+  @some_address "1A8JiWcwvpY7tAopUkSnGuEYHmzGYfZPiq"
 
   setup do
     Application.put_env(:ex_blockchain_info, :main_pass, @main_pass)
+    Application.put_env(:ex_blockchain_info, :main_pass, @second_pass)
     Application.put_env(:ex_blockchain_info, :host, @host)
     Application.put_env(:ex_blockchain_info, :port, @port)
     Application.put_env(:ex_blockchain_info, :guid, @guid)
@@ -17,7 +20,7 @@ defmodule ExBlockchainInfo.WalletTest do
 
   test "get_wallet_balance() triggers correct url" do
     url = get_wallet_balance_url()
-    params = %{"password" => nil } |> Poison.encode!
+    params = %{"password" => @main_pass } |> Poison.encode!
     headers = %{"Content-Type" => "application/json"}
     mock = [post: fn(url, params, headers) -> successful_response() end]
 
@@ -34,7 +37,11 @@ defmodule ExBlockchainInfo.WalletTest do
 
   test "create_address('label') triggers correct url" do
     url = create_address_url()
-    params = %{"password" => nil,"second_password" => nil, "label"=>"label" } |> Poison.encode!
+    params = %{
+      "password" => @main_pass,
+      "second_password" => @second_pass,
+      "label" => "label"
+    } |> Poison.encode!
     headers = %{"Content-Type" => "application/json"}
     mock = [post: fn(url, params, headers) -> successful_response() end]
 
@@ -47,7 +54,11 @@ defmodule ExBlockchainInfo.WalletTest do
 
   test "create_address() triggers correct url" do
     url = create_address_url()
-    params = %{"password" => nil,"second_password" => nil, "label"=>"" } |> Poison.encode!
+    params = %{
+      "password" => @main_pass,
+      "second_password" => @second_pass,
+      "label" => ""
+    } |> Poison.encode!
     headers = %{"Content-Type" => "application/json"}
     mock = [post: fn(url, params, headers) -> successful_response() end]
 
@@ -64,12 +75,17 @@ defmodule ExBlockchainInfo.WalletTest do
 
   test "get_address_balance('address') triggers correct url" do
     url = get_address_balance_url()
-    params = %{"password" => nil,"second_password" => nil, "address"=>"1A8JiWcwvpY7tAopUkSnGuEYHmzGYfZPiq" } |> Poison.encode!
+    params = %{
+      "password" => @main_pass,
+      "second_password" => @second_pass,
+      "address" => @some_address
+    } |> Poison.encode!
+
     headers = %{"Content-Type" => "application/json"}
     mock = [post: fn(url, params, headers) -> successful_response() end]
 
     with_mock HTTPoison, mock do
-      ExBlockchainInfo.Wallet.get_address_balance("1A8JiWcwvpY7tAopUkSnGuEYHmzGYfZPiq")
+      ExBlockchainInfo.Wallet.get_address_balance(@some_address)
 
       assert called HTTPoison.post(url, params, headers)
     end
@@ -81,12 +97,16 @@ defmodule ExBlockchainInfo.WalletTest do
 
   test "archive_address('adress') triggers correct url" do
     url = archive_address_url()
-    params = %{"password" => nil,"second_password" => nil, "address"=>"1A8JiWcwvpY7tAopUkSnGuEYHmzGYfZPiq" } |> Poison.encode!
+    params = %{
+      "password" => @main_pass,
+      "second_password" => @second_pass,
+      "address" => @some_address
+    } |> Poison.encode!
     headers = %{"Content-Type" => "application/json"}
     mock = [post: fn(url, params, headers) -> successful_response() end]
 
     with_mock HTTPoison, mock do
-      ExBlockchainInfo.Wallet.archive_address("1A8JiWcwvpY7tAopUkSnGuEYHmzGYfZPiq")
+      ExBlockchainInfo.Wallet.archive_address(@some_address)
 
       assert called HTTPoison.post(url, params, headers)
     end
@@ -98,12 +118,16 @@ defmodule ExBlockchainInfo.WalletTest do
 
   test "unarchive_address('adress') triggers correct url" do
     url = unarchive_address_url()
-    params = %{"password" => nil,"second_password" => nil, "address"=>"1A8JiWcwvpY7tAopUkSnGuEYHmzGYfZPiq" } |> Poison.encode!
+    params = %{
+      "password" => @main_pass,
+      "second_password" => @second_pass,
+      "address" => @some_address
+    } |> Poison.encode!
     headers = %{"Content-Type" => "application/json"}
     mock = [post: fn(url, params, headers) -> successful_response() end]
 
     with_mock HTTPoison, mock do
-      ExBlockchainInfo.Wallet.unarchive_address("1A8JiWcwvpY7tAopUkSnGuEYHmzGYfZPiq")
+      ExBlockchainInfo.Wallet.unarchive_address(@some_address)
 
       assert called HTTPoison.post(url, params, headers)
     end
@@ -115,7 +139,7 @@ defmodule ExBlockchainInfo.WalletTest do
 
   test "get_addresses_list() triggers correct url" do
     url = get_addresses_list_url()
-    params = %{"password" => nil } |> Poison.encode!
+    params = %{"password" => @main_pass } |> Poison.encode!
     headers = %{"Content-Type" => "application/json"}
     mock = [post: fn(url, params, headers) -> successful_response() end]
 
