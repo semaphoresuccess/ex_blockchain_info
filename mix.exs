@@ -28,7 +28,8 @@ defmodule ExBlockchainInfo.Mixfile do
       {:poison, "~> 3.1.0", override: true},
       {:httpoison, "~> 0.11.2"},
       {:mock, "~> 0.2.0", only: :test},
-      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
+      {:dogma, "~> 0.1"}
     ]
   end
 end

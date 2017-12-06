@@ -8,8 +8,10 @@ defmodule ExBlockchainInfo.Http do
     port = Application.get_env(:ex_blockchain_info, :port)
     guid = Application.get_env(:ex_blockchain_info, :guid)
 
-    url = "http://" <> host <> ":" <> port <> "/merchant/" <> guid <> "/" <> method
-    {:ok, %HTTPoison.Response{body: body}} = HTTPoison.post(url, params, %{"Content-Type" => "application/json"})
+    url = "http://" <> host <> ":" <> port <> "/merchant/" <> guid <>
+                                                              "/" <> method
+    {:ok, %HTTPoison.Response{body: body}} =
+      HTTPoison.post(url, params, %{"Content-Type" => "application/json"})
     body |> Poison.decode!
   end
 

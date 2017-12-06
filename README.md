@@ -1,6 +1,6 @@
 # ExBlockchainInfo
 
-[![Build Status](https://semaphoreci.com/api/v1/ihorkatkov/ex_blockchain_info-3/branches/master/badge.svg)](https://semaphoreci.com/ihorkatkov/ex_blockchain_info-3)
+[![Build Status](https://semaphoreci.com/api/v1/ihorkatkov/ex_blockchain_info-2/branches/master/badge.svg)](https://semaphoreci.com/ihorkatkov/ex_blockchain_info-2)
 
 Elixir client for the Blockchain Wallet API Service
 

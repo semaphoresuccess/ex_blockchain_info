@@ -1,5 +1,9 @@
 defmodule ExBlockchainInfo.Market do
-  def get_rates() do
+  @moduledoc """
+    Market Prices and exchanges rates api
+  """
+
+  def get_rates do
     ExBlockchainInfo.Http.get("https://blockchain.info/en/ticker")
   end
 end
