@@ -1,26 +1,19 @@
-# Exblockchaininfo
+# ExBlockchainInfo
 
-**TODO: Add description**
+[![Build Status](https://semaphoreci.com/api/v1/ihorkatkov/ex_blockchain_info-3/branches/master/badge.svg)](https://semaphoreci.com/ihorkatkov/ex_blockchain_info-3)
+
+Elixir client for the Blockchain Wallet API Service
+
+**Not production ready! Wait for updates**
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `exblockchaininfo` to your list of dependencies in `mix.exs`:
+Currently not available in Hex, because of development stage. Can be installed through github:
 
 ```elixir
 def deps do
   [
-    {:exblockchaininfo, "~> 0.1.0"}
+    {:exblockchaininfo, git: "https://github.com/bytewitchcraft/ex_blockchain_info.git"}
   ]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/exblockchaininfo](https://hexdocs.pm/exblockchaininfo).
-
-## insall blockchainInfo Node and run it
-`blockchain-wallet-service start --port 30000`
-
-## run in console
-`iex -S mix`
